@@ -242,6 +242,8 @@ class FileInfo:
         def get_attr(name: str, dic: dict[Any, Any], default: Any = -1) -> str:
             if name in dic:
                 if isinstance(dic[name], str):
+                    if dic[name] == 'reserved':
+                        return default
                     return dic[name]
                 log.error(f"'{name}' must be a string")
             if default == -1:
